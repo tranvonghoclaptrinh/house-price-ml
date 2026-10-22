@@ -1,0 +1,82 @@
+"""
+service/predict_service.py — Service Python nhỏ nạp mô hình đã huấn luyện và trả dự đoán.
+Người phụ trách: Thành (phối hợp với Vinh, vì cần best_model.pkl từ train_compare.py).
+
+Lý do có service Python riêng thay vì để Node.js tự nạp model:
+Node.js không đọc được file .pkl của scikit-learn/XGBoost, nên Express chỉ đóng vai trò
+tầng API nhận yêu cầu từ giao diện, rồi gọi sang service Python này để lấy kết quả dự đoán.
+
+Cách chạy:
+    pip install flask
+    python service/predict_service.py
+Mặc định chạy ở http://127.0.0.1:5001
+
+Yêu cầu: đã chạy xong notebooks_or_src_py/train_compare.py (có models/best_model.pkl)
+và notebooks_or_src_py/export_defaults.py (có models/feature_defaults.json).
+"""
+
+import os
+# Quy đổi bổ sung, không thay đầu vào hoặc cách suy luận.
+import sys
+from pathlib import Path
+import json
+import joblib
+import pandas as pd
+from flask import Flask, request, jsonify
+
+MODELS_DIR = Path(__file__).resolve().parents[1] / "models"
+MODEL_PATH = os.path.join(MODELS_DIR, "best_model.pkl")
+DEFAULTS_PATH = os.path.join(MODELS_DIR, "feature_defaults.json")
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "notebooks_or_src_py"))
+from tien_te import TY_GIA_USD_VND, sang_vnd
+
+app = Flask(__name__)
+
+# Nạp 1 lần khi service khởi động, không nạp lại mỗi request
+print("Đang nạp mô hình...")
+model = joblib.load(MODEL_PATH)
+with open(DEFAULTS_PATH, "r", encoding="utf-8") as f:
+    feature_defaults = json.load(f)
+print(f"Đã nạp mô hình và {len(feature_defaults)} giá trị mặc định.")
+
+
+@app.route("/health", methods=["GET"])
+def health():
+    return jsonify({"status": "ok"})
+
+
+@app.route("/predict", methods=["POST"])
+def predict():
+    """
+    Nhận JSON chứa MỘT PHẦN thuộc tính (những gì form demo hỏi người dùng).
+    Các thuộc tính còn lại (mà mô hình cần nhưng form không hỏi) được điền
+    bằng giá trị mặc định (median/mode) tính từ tập train.
+    """
+    user_input = request.get_json(force=True) or {}
+
+    # Ghép input người dùng đè lên bộ giá trị mặc định đầy đủ
+    full_row = dict(feature_defaults)
+    for key, value in user_input.items():
+        if key in full_row:
+            full_row[key] = value
+        # Nếu key lạ (không có trong feature_defaults) thì bỏ qua, không làm hỏng pipeline
+
+    X_input = pd.DataFrame([full_row])
+
+    try:
+        prediction = model.predict(X_input)[0]
+    except Exception as e:
+        return jsonify({"error": f"Lỗi khi dự đoán: {str(e)}"}), 400
+
+    return jsonify({
+        "predicted_price": round(float(prediction), 2),
+        "used_input": user_input,
+        "predicted_price_usd": float(prediction),
+        "predicted_price_vnd": float(sang_vnd(float(prediction))),
+        "usd_to_vnd": TY_GIA_USD_VND,
+    })
+
+
+if __name__ == "__main__":
+    app.run(host="127.0.0.1", port=5001, debug=False)

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dự đoán giá nhà — Demo Nhóm 9</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    max-width: 480px;
+    margin: 40px auto;
+    padding: 0 16px;
+    color: #222;
+  }
+  h1 { font-size: 22px; }
+  .note { color: #666; font-size: 13px; margin-bottom: 20px; }
+  label { display: block; margin-top: 12px; font-weight: bold; font-size: 14px; }
+  input, select {
+    width: 100%; padding: 8px; margin-top: 4px;
+    box-sizing: border-box; font-size: 14px;
+  }
+  button {
+    margin-top: 20px; padding: 10px 16px;
+    background: #2E5395; color: white; border: none;
+    border-radius: 4px; cursor: pointer; font-size: 15px;
+  }
+  button:hover { background: #234070; }
+  #result {
+    margin-top: 20px; padding: 14px;
+    border-radius: 6px; font-size: 16px; display: none;
+  }
+  #result.ok { background: #e8f5e9; color: #256029; display: block; }
+  #result.error { background: #fdecea; color: #b00020; display: block; }
+</style>
+</head>
+<body>
+
+<h1>Dự đoán giá nhà — Demo</h1>
+<p class="note">
+  Ứng dụng minh họa phục vụ học tập, không thay thế thẩm định giá thực tế.
+  Trường nào để trống sẽ được điền trung vị (số) hoặc giá trị xuất hiện nhiều nhất (phân loại) từ tập huấn luyện. Giá hiển thị bằng USD.
+</p>
+
+<form id="predict-form">
+  <label for="LotArea">Diện tích đất (LotArea, sqft)</label>
+  <input type="number" id="LotArea" name="LotArea" placeholder="Ví dụ: 8500">
+
+  <label for="GrLivArea">Diện tích sử dụng (GrLivArea, sqft)</label>
+  <input type="number" id="GrLivArea" name="GrLivArea" placeholder="Ví dụ: 1500">
+
+  <label for="OverallQual">Chất lượng tổng thể (1-10)</label>
+  <input type="number" id="OverallQual" name="OverallQual" min="1" max="10" placeholder="Ví dụ: 6">
+
+  <label for="YearBuilt">Năm xây dựng</label>
+  <input type="number" id="YearBuilt" name="YearBuilt" placeholder="Ví dụ: 2005">
+
+  <label for="Neighborhood">Khu vực (Neighborhood)</label>
+  <input type="text" id="Neighborhood" name="Neighborhood" placeholder="Ví dụ: CollgCr">
+
+  <label for="GarageType">Loại garage (GarageType)</label>
+  <input type="text" id="GarageType" name="GarageType" placeholder="Ví dụ: Attchd">
+
+  <button type="submit">Dự đoán giá nhà</button>
+</form>
+
+<div id="result"></div>
+
+<script>
+const form = document.getElementById("predict-form");
+const resultBox = document.getElementById("result");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  resultBox.className = "";
+  resultBox.style.removeProperty("display");
+
+  const formData = new FormData(form);
+  const payload = {};
+  for (const [key, value] of formData.entries()) {
+    if (value !== "") payload[key] = value;
+  }
+
+  try {
+    const res = await fetch("/predict", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    const data = await res.json();
+
+    if (!res.ok) {
+      resultBox.className = "error";
+      resultBox.textContent = "Lỗi: " + (data.error || "Không rõ nguyên nhân.");
+      return;
+    }
+
+    const price = data.predicted_price.toLocaleString("en-US");
+    resultBox.className = "ok";
+    resultBox.textContent = `Giá nhà dự đoán: $${price} USD`;
+  } catch (err) {
+    resultBox.className = "error";
+    resultBox.textContent = "Không kết nối được đến server.";
+  }
+});
+</script>
+
+</body>
+</html>

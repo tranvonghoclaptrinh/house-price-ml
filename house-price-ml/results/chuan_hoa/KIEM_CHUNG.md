@@ -1,0 +1,150 @@
+# Kiểm chứng kết quả TRAIN TEST và VND
+
+Giá quy đổi theo tỷ giá cố định 1 USD = 25.000 ₫ từ dữ liệu nhà ở Ames (Iowa, Hoa Kỳ, 2006–2010); chỉ để thống nhất đơn vị, không phản ánh giá thị trường Việt Nam.
+
+Ngày kiểm tra UTC: 2026-10-22T13:46:55.732333+00:00
+
+Kết quả: 140 PASS; 0 FAIL.
+
+- PASS — Kích thước và phân hoạch TRAIN/TEST: TRAIN=1168, TEST=292, tổng=1460, giao=0
+- PASS — Id TEST tái lập từ split gốc: seed=42; sai khác đối xứng=0
+- PASS — Giá nhãn và quy đổi trong phân hoạch: sai khác VND tối đa=0.0
+- PASS — XGBoost TEST khớp CSV gốc: MAE USD=15822.881702161816; gốc=15822.88; RMSE USD=26086.622953442264; gốc=26086.62; R²=0.911279927511; gốc=0.9113
+- PASS — XGBoost TEST khớp tham chiếu đặc tả: MAE=15822.881702161816; RMSE=26086.622953442264; R²=0.9112799275111118; CV=16908.2255859375
+- PASS — XGBoost CV 5 fold trên TRAIN: fold VND=[389019921.875, 463944189.453125, 469202148.4375, 419987646.484375, 371374291.9921875]; mean USD=16908.2255859375; gốc=16908.23
+- PASS — XGBoost TEST tính lại độc lập: n=292; MAE=395572042.5540454; RMSE=652165573.8360566; R²=0.9112799275111118; MAPE=9.420236524946365
+- PASS — XGBoost TEST từng sai số đúng: sai khác cột sai số tối đa=0.0 VND
+- PASS — XGBoost TEST đổi đơn vị đúng: MAE VND=395572042.5540454; MAE USD gốc=15822.881702161814; R² giữ nguyên=0.9112799275111118; MAPE giữ nguyên=9.420236524946365
+- PASS — XGBoost TRAIN tính lại độc lập: n=1168; MAE=152175325.82740262; RMSE=210366092.01844266; R²=0.9881288238399449; MAPE=3.8236456393713696
+- PASS — XGBoost TRAIN từng sai số đúng: sai khác cột sai số tối đa=0.0 VND
+- PASS — XGBoost TRAIN đổi đơn vị đúng: MAE VND=152175325.82740262; MAE USD gốc=6087.013033096105; R² giữ nguyên=0.9881288238399449; MAPE giữ nguyên=3.8236456393713696
+- PASS — XGBoost TRAIN đối chiếu tham chiếu: MAE TRAIN USD=6087.013033096105; R² TRAIN=0.9881288238399449
+- PASS — Gradient Boosting TEST khớp CSV gốc: MAE USD=17099.275710661237; gốc=17099.28; RMSE USD=26755.673523148871; gốc=26755.67; R²=0.906670714342; gốc=0.9067
+- PASS — Gradient Boosting TEST khớp tham chiếu đặc tả: MAE=17099.275710661237; RMSE=26755.67352314887; R²=0.9066707143424279; CV=16638.36981363044
+- PASS — Gradient Boosting CV 5 fold trên TRAIN: fold VND=[395835566.70555866, 454345695.3101471, 456861085.62122464, 414894853.4640318, 357859025.6028431]; mean USD=16638.36981363044; gốc=16638.37
+- PASS — Gradient Boosting TEST tính lại độc lập: n=292; MAE=427481892.7665309; RMSE=668891838.0787216; R²=0.9066707143424279; MAPE=10.131075165356485
+- PASS — Gradient Boosting TEST từng sai số đúng: sai khác cột sai số tối đa=9.5367431640625e-07 VND
+- PASS — Gradient Boosting TEST đổi đơn vị đúng: MAE VND=427481892.76653093; MAE USD gốc=17099.275710661237; R² giữ nguyên=0.9066707143424279; MAPE giữ nguyên=10.131075165356483
+- PASS — Gradient Boosting TRAIN tính lại độc lập: n=1168; MAE=241683271.6651858; RMSE=330279490.6464884; R²=0.9707379004293963; MAPE=5.969587604669887
+- PASS — Gradient Boosting TRAIN từng sai số đúng: sai khác cột sai số tối đa=1.7285346984863281e-06 VND
+- PASS — Gradient Boosting TRAIN đổi đơn vị đúng: MAE VND=241683271.66518575; MAE USD gốc=9667.33086660743; R² giữ nguyên=0.9707379004293963; MAPE giữ nguyên=5.969587604669889
+- PASS — Gradient Boosting TRAIN đối chiếu tham chiếu: MAE TRAIN USD=9667.33086660743; R² TRAIN=0.9707379004293963
+- PASS — Random Forest TEST khớp CSV gốc: MAE USD=17634.873835616439; gốc=17634.87; RMSE USD=29183.868869600774; gốc=29183.87; R²=0.888961932101; gốc=0.889
+- PASS — Random Forest TEST khớp tham chiếu đặc tả: MAE=17634.87383561644; RMSE=29183.868869600774; R²=0.8889619321014003; CV=18301.01202314662
+- PASS — Random Forest CV 5 fold trên TRAIN: fold VND=[419160130.3418804, 506625133.01282054, 509425187.5, 440963862.6609442, 411452189.3776824]; mean USD=18301.01202314662; gốc=18301.01
+- PASS — Random Forest TEST tính lại độc lập: n=292; MAE=440871845.89041096; RMSE=729596721.7400194; R²=0.8889619321014002; MAPE=10.729039574383561
+- PASS — Random Forest TEST từng sai số đúng: sai khác cột sai số tối đa=9.5367431640625e-07 VND
+- PASS — Random Forest TEST đổi đơn vị đúng: MAE VND=440871845.89041096; MAE USD gốc=17634.87383561644; R² giữ nguyên=0.8889619321014003; MAPE giữ nguyên=10.729039574383561
+- PASS — Random Forest TRAIN tính lại độc lập: n=1168; MAE=161970109.8030822; RMSE=274555998.6610608; R²=0.9797789294143112; MAPE=3.7990594154845017
+- PASS — Random Forest TRAIN từng sai số đúng: sai khác cột sai số tối đa=7.152557373046875e-07 VND
+- PASS — Random Forest TRAIN đổi đơn vị đúng: MAE VND=161970109.8030822; MAE USD gốc=6478.8043921232875; R² giữ nguyên=0.9797789294143112; MAPE giữ nguyên=3.7990594154845017
+- PASS — Random Forest TRAIN đối chiếu tham chiếu: MAE TRAIN USD=6478.8043921232875; R² TRAIN=0.9797789294143112
+- PASS — Linear Regression TEST khớp CSV gốc: MAE USD=20594.936852948518; gốc=20594.94; RMSE USD=31143.086141295196; gốc=31143.09; R²=0.873552729283; gốc=0.8736
+- PASS — Linear Regression TEST khớp tham chiếu đặc tả: MAE=20594.93685294852; RMSE=31143.086141295196; R²=0.8735527292834899; CV=20188.385355996914
+- PASS — Linear Regression CV 5 fold trên TRAIN: fold VND=[517686891.8622412, 516677604.088823, 512699791.6711124, 550808792.8857921, 425675088.9916456]; mean USD=20188.385355996917; gốc=20188.39
+- PASS — Linear Regression TEST tính lại độc lập: n=292; MAE=514873421.3237129; RMSE=778577153.5323797; R²=0.8735527292834899; MAPE=12.609128612997958
+- PASS — Linear Regression TEST từng sai số đúng: sai khác cột sai số tối đa=9.5367431640625e-07 VND
+- PASS — Linear Regression TEST đổi đơn vị đúng: MAE VND=514873421.32371294; MAE USD gốc=20594.93685294852; R² giữ nguyên=0.8735527292834899; MAPE giữ nguyên=12.60912861299796
+- PASS — Linear Regression TRAIN tính lại độc lập: n=1168; MAE=386677555.117415; RMSE=588469326.3392723; R²=0.9071055148185647; MAPE=9.056684719150885
+- PASS — Linear Regression TRAIN từng sai số đúng: sai khác cột sai số tối đa=9.5367431640625e-07 VND
+- PASS — Linear Regression TRAIN đổi đơn vị đúng: MAE VND=386677555.117415; MAE USD gốc=15467.1022046966; R² giữ nguyên=0.9071055148185647; MAPE giữ nguyên=9.056684719150887
+- PASS — Linear Regression TRAIN đối chiếu tham chiếu: MAE TRAIN USD=15467.1022046966; R² TRAIN=0.9071055148185647
+- PASS — Decision Tree TEST khớp CSV gốc: MAE USD=25754.333182354865; gốc=25754.33; RMSE USD=40546.963413086582; gốc=40546.96; R²=0.785660192590; gốc=0.7857
+- PASS — Decision Tree TEST khớp tham chiếu đặc tả: MAE=25754.333182354865; RMSE=40546.96341308658; R²=0.785660192589763; CV=26322.776051393885
+- PASS — Decision Tree CV 5 fold trên TRAIN: fold VND=[658658290.0130043, 731421370.74885, 703197173.9663528, 601199377.2436817, 595870794.4523464]; mean USD=26322.77605139388; gốc=26322.78
+- PASS — Decision Tree TEST tính lại độc lập: n=292; MAE=643858329.5588717; RMSE=1013674085.3271646; R²=0.785660192589763; MAPE=15.643734053565902
+- PASS — Decision Tree TEST từng sai số đúng: sai khác cột sai số tối đa=9.5367431640625e-07 VND
+- PASS — Decision Tree TEST đổi đơn vị đúng: MAE VND=643858329.5588716; MAE USD gốc=25754.333182354865; R² giữ nguyên=0.785660192589763; MAPE giữ nguyên=15.643734053565902
+- PASS — Decision Tree TRAIN tính lại độc lập: n=1168; MAE=265964577.85928845; RMSE=362884417.69052875; R²=0.9646752650998217; MAPE=7.014059530203405
+- PASS — Decision Tree TRAIN từng sai số đúng: sai khác cột sai số tối đa=7.897615432739258e-07 VND
+- PASS — Decision Tree TRAIN đổi đơn vị đúng: MAE VND=265964577.85928842; MAE USD gốc=10638.583114371537; R² giữ nguyên=0.9646752650998217; MAPE giữ nguyên=7.014059530203405
+- PASS — Decision Tree TRAIN đối chiếu tham chiếu: MAE TRAIN USD=10638.583114371537; R² TRAIN=0.9646752650998217
+- PASS — XGBoost đo lại trùng best_model.pkl: sai khác USD tối đa=0.0; sai khác tương đối tối đa=0.0; lúc đo trước xuất CSV=0.0
+- PASS — SHA-256 .gitignore: 17086ad23d0670253c0d7917c98a5948d1fa3ec2c57c1a024c1b27cd9f244fba
+- PASS — SHA-256 HUONG_DAN_THANH.md: 57e1985e9d90f6770dd4597250b88a828c060e2ec679b1de801f55f6f14d49b2
+- PASS — SHA-256 KET_QUA_DEMO_THANH.json: 4974fdd0cf0d8fa56007f9cc53be453f4cd6916ae6d68c03fe47de7900a3b9e4
+- PASS — Thêm có bản gốc README.md: gốc=414077cb3ff071eda378ad38a9c11d624dc218028fd648d5ad5d41f052730a34; mới=c5413219680015e8d60d0481e5238289de7587aa692f400f554e675c0288ac1c; backup khớp=True
+- PASS — SHA-256 data/data_description.txt: 356a4670aa688afa8ba44b1365b633fbbac2dae535fe4638532630607d64070d
+- PASS — SHA-256 data/sample_submission.csv: f19e99699b925aa3085c8d2ae43c62f15fbcd35e4a953b98025f8392c3ffa807
+- PASS — SHA-256 data/test.csv: 8fdd3d829d4d986b58f845c9553b225e67dd8383624d90fb6ca1d4bed5798c1e
+- PASS — SHA-256 data/train.csv: 1e18addf81e5e4d347cc17ee6075bbe4a42b7fa26b9e5b063e8f692a5f929d41
+- PASS — SHA-256 models/best_model.pkl: 239dc31cba8bcd9ea0a2da4f38d1ea20e817f1c6517dd1ea3c5937cfa44e7866
+- PASS — SHA-256 models/feature_defaults.json: bcd89b41a97dfb603258b74277936d3aef57e567b449a546419616e57900da6b
+- PASS — SHA-256 notebooks_or_src_py/eda.py: 5a8b500e3e712ea81a1fdb6bd3e2956cb9ec29828ca502442016f4a7e1469deb
+- PASS — SHA-256 notebooks_or_src_py/export_defaults.py: 7ac7649c73b56c69754c72b99181147443ec5be3297b430768ed3cdd0ac5a8c3
+- PASS — SHA-256 notebooks_or_src_py/metrics.py: 6d409638275ed530791a8a64ad978f4e94216c25fd3ace5cf0f2df5f6c00497f
+- PASS — SHA-256 notebooks_or_src_py/preprocess.py: 6d9e738f8ebdae2043a32e06cbcb917cbd1bf0bd868631c431439ae56d6e1a47
+- PASS — SHA-256 notebooks_or_src_py/train_compare.py: 8e679c3ce9bc2392d0b6c1a0baa53ed31a8d9f50343d5d553d2f7cc699e0626f
+- PASS — SHA-256 package-lock.json: b0fb5ab18d9f6cdddb32940cdc4dbaa5f792362ea3c86ece479941978734fdbe
+- PASS — SHA-256 package.json: 3e6806cf2bca1bbcaf55cd5e2b99fc6101ba674b3d6eacbedcc6946b65cf9d1d
+- PASS — Thêm có bản gốc public/index.html: gốc=a3f9cf002057fa3e6f6b8e85dc3cd7f1d88cb497f9bd8b74576bf97fec5de4ea; mới=e36f806611898f3d985474972790423c3a894335963ef5d91e01d374dde7ba84; backup khớp=True
+- PASS — Thêm có bản gốc requirements.txt: gốc=0d029ad98f348a79dc73e54b8edbc9464cc57c0a34956772d38474bfc6628e1b; mới=36d3299bd93c6de00f53eef3780a93c217769eb62e385863e0829f44b75be957; backup khớp=True
+- PASS — SHA-256 results/correlation_heatmap.png: bb88494a90d597ae8ab5e676c2f029b4866d1c4a096de84904ae257c03698c46
+- PASS — SHA-256 results/missing_values_report.csv: 78c2c13063e13cf0cc24d3470c4ea48f0524e6e28f2987396dd9bfbdb204d1a4
+- PASS — SHA-256 results/model_results.csv: ffea8e05d4eedff4db1088caa1edf0582f152c145470c15dcfccd7239c607d53
+- PASS — SHA-256 results/saleprice_distribution.png: 053a2d101a6e1413722ecf40e504c73a51fafe40ba3caf231fe35607dd471e0f
+- PASS — SHA-256 results/xgboost_feature_importance.csv: 790e25fc646521140abdfa513f765250aa5d862d1165142611cf38fa0b1410aa
+- PASS — SHA-256 results/xgboost_feature_importance.png: 98cfb9aebec583de2a880dc3e23cdbbb7a5afe9ded992b80bb060ed4d46380db
+- PASS — SHA-256 server.js: a9d0c71d91c047f21137efbf07f78c3da37898484feab297a115404fc13c196e
+- PASS — Thêm có bản gốc service/predict_service.py: gốc=631bd4754b2624e634045898c335defaa914ad6d5b3203d552ef6b542acb654e; mới=c436a08314178d1d64c50a4623139044270a1bba2c8337a71db8927bf46b3f24; backup khớp=True
+- PASS — CSV UTF-8 BOM 01_phan_chia_du_lieu.csv: 1460 dòng; 4 cột; BOM=True
+- PASS — Đơn vị cột chính 01_phan_chia_du_lieu.csv: cột USD không ghi gốc=[]
+- PASS — CSV UTF-8 BOM 02_ket_qua_TRAIN.csv: 5 dòng; 8 cột; BOM=True
+- PASS — Đơn vị cột chính 02_ket_qua_TRAIN.csv: cột USD không ghi gốc=[]
+- PASS — Thứ tự model 02_ket_qua_TRAIN.csv: ['XGBoost', 'Gradient Boosting', 'Random Forest', 'Linear Regression', 'Decision Tree']
+- PASS — CSV UTF-8 BOM 03_ket_qua_TEST.csv: 5 dòng; 8 cột; BOM=True
+- PASS — Đơn vị cột chính 03_ket_qua_TEST.csv: cột USD không ghi gốc=[]
+- PASS — Thứ tự model 03_ket_qua_TEST.csv: ['XGBoost', 'Gradient Boosting', 'Random Forest', 'Linear Regression', 'Decision Tree']
+- PASS — CSV UTF-8 BOM 04_ket_qua_CV_5fold.csv: 5 dòng; 9 cột; BOM=True
+- PASS — Đơn vị cột chính 04_ket_qua_CV_5fold.csv: cột USD không ghi gốc=[]
+- PASS — Thứ tự model 04_ket_qua_CV_5fold.csv: ['XGBoost', 'Gradient Boosting', 'Random Forest', 'Linear Regression', 'Decision Tree']
+- PASS — CSV UTF-8 BOM 05_so_sanh_TRAIN_vs_TEST.csv: 5 dòng; 8 cột; BOM=True
+- PASS — Đơn vị cột chính 05_so_sanh_TRAIN_vs_TEST.csv: cột USD không ghi gốc=[]
+- PASS — Thứ tự model 05_so_sanh_TRAIN_vs_TEST.csv: ['XGBoost', 'Gradient Boosting', 'Random Forest', 'Linear Regression', 'Decision Tree']
+- PASS — CSV UTF-8 BOM 06_du_doan_TEST_chi_tiet.csv: 1460 dòng; 7 cột; BOM=True
+- PASS — Đơn vị cột chính 06_du_doan_TEST_chi_tiet.csv: cột USD không ghi gốc=[]
+- PASS — Thứ tự model 06_du_doan_TEST_chi_tiet.csv: ['XGBoost', 'Gradient Boosting', 'Random Forest', 'Linear Regression', 'Decision Tree']
+- PASS — CSV UTF-8 BOM 07_du_doan_TRAIN_chi_tiet.csv: 5840 dòng; 7 cột; BOM=True
+- PASS — Đơn vị cột chính 07_du_doan_TRAIN_chi_tiet.csv: cột USD không ghi gốc=[]
+- PASS — Thứ tự model 07_du_doan_TRAIN_chi_tiet.csv: ['XGBoost', 'Gradient Boosting', 'Random Forest', 'Linear Regression', 'Decision Tree']
+- PASS — CSV UTF-8 BOM 08_cau_hinh_mo_hinh.csv: 5 dòng; 10 cột; BOM=True
+- PASS — Đơn vị cột chính 08_cau_hinh_mo_hinh.csv: cột USD không ghi gốc=[]
+- PASS — Thứ tự model 08_cau_hinh_mo_hinh.csv: ['XGBoost', 'Gradient Boosting', 'Random Forest', 'Linear Regression', 'Decision Tree']
+- PASS — CSV UTF-8 BOM 09_thong_ke_SalePrice_VND.csv: 3 dòng; 9 cột; BOM=True
+- PASS — Đơn vị cột chính 09_thong_ke_SalePrice_VND.csv: cột USD không ghi gốc=[]
+- PASS — CSV UTF-8 BOM model_results_VND.csv: 5 dòng; 8 cột; BOM=True
+- PASS — Đơn vị cột chính model_results_VND.csv: cột USD không ghi gốc=[]
+- PASS — Thứ tự model model_results_VND.csv: ['XGBoost', 'Gradient Boosting', 'Random Forest', 'Linear Regression', 'Decision Tree']
+- PASS — Workbook mở được và có sheet bắt buộc: ['Đọc trước tiên', 'Phân chia dữ liệu', 'Kết quả TRAIN', 'Kết quả TEST', 'CV trên TRAIN', 'So sánh TRAIN TEST', 'Dự đoán TEST chi tiết', 'Dự đoán TRAIN chi tiết', 'Cấu hình', 'Thống kê giá', 'Quy đổi CSV gốc', 'Dự đoán TEST (dạng rộng)']
+- PASS — Excel ghi chú và ký tự Đọc trước tiên: hàng=27; cột=1; freeze=A2
+- PASS — Excel ghi chú và ký tự Phân chia dữ liệu: hàng=1463; cột=4; freeze=A2
+- PASS — Excel ghi chú và ký tự Kết quả TRAIN: hàng=8; cột=8; freeze=A2
+- PASS — Excel ghi chú và ký tự Kết quả TEST: hàng=8; cột=8; freeze=A2
+- PASS — Excel ghi chú và ký tự CV trên TRAIN: hàng=8; cột=9; freeze=A2
+- PASS — Excel ghi chú và ký tự So sánh TRAIN TEST: hàng=8; cột=8; freeze=A2
+- PASS — Excel ghi chú và ký tự Dự đoán TEST chi tiết: hàng=1463; cột=7; freeze=A2
+- PASS — Excel ghi chú và ký tự Dự đoán TRAIN chi tiết: hàng=5843; cột=7; freeze=A2
+- PASS — Excel ghi chú và ký tự Cấu hình: hàng=8; cột=10; freeze=A2
+- PASS — Excel ghi chú và ký tự Thống kê giá: hàng=6; cột=9; freeze=A2
+- PASS — Excel ghi chú và ký tự Quy đổi CSV gốc: hàng=8; cột=8; freeze=A2
+- PASS — Excel ghi chú và ký tự Dự đoán TEST (dạng rộng): hàng=295; cột=7; freeze=A2
+- PASS — Định dạng tiền R² phần trăm Excel: D2=#,##0; F2=0.0000; G2=0.00%; MAPE lưu tỷ lệ=0.09420236524946364
+- PASS — Dự đoán TEST dạng rộng: hàng=295 gồm header và ghi chú; cột=7
+- PASS — Quy đổi CSV gốc XGBoost: MAE=395572000.0; RMSE=652165500.0; CV=422705750.0; R²=0.9113; thời gian gốc=0.27
+- PASS — Quy đổi CSV gốc Gradient Boosting: MAE=427482000.0; RMSE=668891750.0; CV=415959250.0; R²=0.9067; thời gian gốc=0.87
+- PASS — Quy đổi CSV gốc Random Forest: MAE=440871750.0; RMSE=729596750.0; CV=457525249.99999994; R²=0.889; thời gian gốc=9.19
+- PASS — Quy đổi CSV gốc Linear Regression: MAE=514873499.99999994; RMSE=778577250.0; CV=504709750.0; R²=0.8736; thời gian gốc=0.05
+- PASS — Quy đổi CSV gốc Decision Tree: MAE=643858250.0; RMSE=1013674000.0; CV=658069500.0; R²=0.7857; thời gian gốc=0.04
+- PASS — Khoảng cách XGBoost: tỷ lệ=2.599449289188337; gap R²=0.07684889632883318; nhãn=Khoảng cách lớn
+- PASS — Khoảng cách Gradient Boosting: tỷ lệ=1.768769058037; gap R²=0.06406718608696849; nhãn=Khoảng cách vừa
+- PASS — Khoảng cách Random Forest: tỷ lệ=2.721933364288066; gap R²=0.09081699731291093; nhãn=Khoảng cách lớn
+- PASS — Khoảng cách Linear Regression: tỷ lệ=1.3315316974303593; gap R²=0.03355278553507479; nhãn=Khoảng cách nhỏ
+- PASS — Khoảng cách Decision Tree: tỷ lệ=2.4208424096967986; gap R²=0.17901507251005866; nhãn=Khoảng cách lớn
+- PASS — Thống kê giá TOÀN BỘ: count=1460.0; mean VND=4523029897.260274; min=872500000.0; max=18875000000.0
+- PASS — Thống kê giá TRAIN: count=1168.0; mean VND=4536038548.80137; min=872500000.0; max=18625000000.0
+- PASS — Thống kê giá TEST: count=292.0; mean VND=4470995291.09589; min=882775000.0; max=18875000000.0
+- PASS — Biểu đồ bieu_do_phan_phoi_SalePrice_VND.png: 37483 bytes, PNG đọc được
+- PASS — Biểu đồ bieu_do_MAE_TRAIN_vs_TEST_VND.png: 72659 bytes, PNG đọc được
+- PASS — Biểu đồ bieu_do_thuc_te_vs_du_doan_TEST_XGBoost.png: 101513 bytes, PNG đọc được
+
+Các phép đo chỉ tái lập mô hình gốc. Không bỏ Id, không thay pipeline, không tuning; TEST từng được bản gốc dùng chọn model, nên không coi là đánh giá cuối chưa từng dùng lựa chọn.

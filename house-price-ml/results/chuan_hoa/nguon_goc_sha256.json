@@ -1,0 +1,32 @@
+{
+  "base_commit": "00e2ee36d4f9a8b2d18320644c0b2029860bdfb5",
+  "files": {
+    ".gitignore": "17086ad23d0670253c0d7917c98a5948d1fa3ec2c57c1a024c1b27cd9f244fba",
+    "HUONG_DAN_THANH.md": "57e1985e9d90f6770dd4597250b88a828c060e2ec679b1de801f55f6f14d49b2",
+    "KET_QUA_DEMO_THANH.json": "4974fdd0cf0d8fa56007f9cc53be453f4cd6916ae6d68c03fe47de7900a3b9e4",
+    "README.md": "414077cb3ff071eda378ad38a9c11d624dc218028fd648d5ad5d41f052730a34",
+    "data/data_description.txt": "356a4670aa688afa8ba44b1365b633fbbac2dae535fe4638532630607d64070d",
+    "data/sample_submission.csv": "f19e99699b925aa3085c8d2ae43c62f15fbcd35e4a953b98025f8392c3ffa807",
+    "data/test.csv": "8fdd3d829d4d986b58f845c9553b225e67dd8383624d90fb6ca1d4bed5798c1e",
+    "data/train.csv": "1e18addf81e5e4d347cc17ee6075bbe4a42b7fa26b9e5b063e8f692a5f929d41",
+    "models/best_model.pkl": "239dc31cba8bcd9ea0a2da4f38d1ea20e817f1c6517dd1ea3c5937cfa44e7866",
+    "models/feature_defaults.json": "bcd89b41a97dfb603258b74277936d3aef57e567b449a546419616e57900da6b",
+    "notebooks_or_src_py/eda.py": "5a8b500e3e712ea81a1fdb6bd3e2956cb9ec29828ca502442016f4a7e1469deb",
+    "notebooks_or_src_py/export_defaults.py": "7ac7649c73b56c69754c72b99181147443ec5be3297b430768ed3cdd0ac5a8c3",
+    "notebooks_or_src_py/metrics.py": "6d409638275ed530791a8a64ad978f4e94216c25fd3ace5cf0f2df5f6c00497f",
+    "notebooks_or_src_py/preprocess.py": "6d9e738f8ebdae2043a32e06cbcb917cbd1bf0bd868631c431439ae56d6e1a47",
+    "notebooks_or_src_py/train_compare.py": "8e679c3ce9bc2392d0b6c1a0baa53ed31a8d9f50343d5d553d2f7cc699e0626f",
+    "package-lock.json": "b0fb5ab18d9f6cdddb32940cdc4dbaa5f792362ea3c86ece479941978734fdbe",
+    "package.json": "3e6806cf2bca1bbcaf55cd5e2b99fc6101ba674b3d6eacbedcc6946b65cf9d1d",
+    "public/index.html": "a3f9cf002057fa3e6f6b8e85dc3cd7f1d88cb497f9bd8b74576bf97fec5de4ea",
+    "requirements.txt": "0d029ad98f348a79dc73e54b8edbc9464cc57c0a34956772d38474bfc6628e1b",
+    "results/correlation_heatmap.png": "bb88494a90d597ae8ab5e676c2f029b4866d1c4a096de84904ae257c03698c46",
+    "results/missing_values_report.csv": "78c2c13063e13cf0cc24d3470c4ea48f0524e6e28f2987396dd9bfbdb204d1a4",
+    "results/model_results.csv": "ffea8e05d4eedff4db1088caa1edf0582f152c145470c15dcfccd7239c607d53",
+    "results/saleprice_distribution.png": "053a2d101a6e1413722ecf40e504c73a51fafe40ba3caf231fe35607dd471e0f",
+    "results/xgboost_feature_importance.csv": "790e25fc646521140abdfa513f765250aa5d862d1165142611cf38fa0b1410aa",
+    "results/xgboost_feature_importance.png": "98cfb9aebec583de2a880dc3e23cdbbb7a5afe9ded992b80bb060ed4d46380db",
+    "server.js": "a9d0c71d91c047f21137efbf07f78c3da37898484feab297a115404fc13c196e",
+    "service/predict_service.py": "631bd4754b2624e634045898c335defaa914ad6d5b3203d552ef6b542acb654e"
+  }
+}
